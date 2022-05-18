@@ -1,4 +1,10 @@
 package co.com.sofka.exchange.values;
 
-public class ExchangeAmount {
+import co.com.sofka.domain.generic.ValueObject;
+
+public class ExchangeAmount implements ValueObject<Integer> {
+    @Override
+    public Integer value() {
+        return null;
+    }
 }

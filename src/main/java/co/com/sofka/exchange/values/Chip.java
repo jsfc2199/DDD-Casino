@@ -1,4 +1,10 @@
 package co.com.sofka.exchange.values;
 
-public class Chip {
+import co.com.sofka.domain.generic.ValueObject;
+
+public class Chip implements ValueObject<Integer> {
+    @Override
+    public Integer value() {
+        return null;
+    }
 }

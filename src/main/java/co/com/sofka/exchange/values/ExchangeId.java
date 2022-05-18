@@ -1,4 +1,6 @@
 package co.com.sofka.exchange.values;
 
-public class ExchangeId {
+import co.com.sofka.domain.generic.Identity;
+
+public class ExchangeId extends Identity {
 }
