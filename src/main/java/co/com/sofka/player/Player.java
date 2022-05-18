@@ -5,17 +5,25 @@ import co.com.sofka.player.events.*;
 import co.com.sofka.player.values.*;
 
 import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
 public class Player extends AggregateEvent<PlayerId> {
     protected Name name;
     protected Payment payment;
-    protected ConsumptionInvoice consumptionInvoice;
-    protected Account account;
+    protected Set<ConsumptionInvoice> consumptionInvoices;
+    protected Set<Account> accounts;
 
 
     public Player(PlayerId entityId, Payment payment, Name name) {
         super(entityId);
         appendChange(new PlayerCreated(payment, name)).apply();
+    }
+
+    //to affect the states in order to apply the behaviors we need a private constructor, with just the id
+    private Player(PlayerId entityId){
+        super(entityId);
+        subscribe(new PlayerChange(this) );//every time that a bahavior is launched an event that has a suscriptor in order to change the states
     }
 
     //behaviors
@@ -75,6 +83,13 @@ public class Player extends AggregateEvent<PlayerId> {
     }
 
     //properties
+    public Optional<Account> getAccountById(AccountId accountId){
+        return accounts().stream().filter(account -> account.identity().equals(accountId)).findFirst();
+    }
+
+    public Optional<ConsumptionInvoice> getConsumptionInvoiceById(ConsumptionInvoiceId consumptionInvoiceId){
+        return consumptionInvoices().stream().filter(invoice -> invoice.identity().equals(consumptionInvoiceId)).findFirst();
+    }
 
     public Name name() {
         return name;
@@ -84,11 +99,11 @@ public class Player extends AggregateEvent<PlayerId> {
         return payment;
     }
 
-    public ConsumptionInvoice consumptionInvoice() {
-        return consumptionInvoice;
+    public Set<ConsumptionInvoice> consumptionInvoices() {
+        return consumptionInvoices;
     }
 
-    public Account account() {
-        return account;
+    public Set<Account> accounts() {
+        return accounts;
     }
 }

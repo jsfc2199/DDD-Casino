@@ -5,13 +5,14 @@ import co.com.sofka.player.values.ConsumptionInvoiceId;
 import co.com.sofka.player.values.Item;
 import co.com.sofka.player.values.Value;
 
+import java.util.List;
 import java.util.Objects;
 
 public class ConsumptionInvoice extends Entity<ConsumptionInvoiceId> {
     private Value value;
-    private Item item;
+    private List<Item> item;
 
-    public ConsumptionInvoice(ConsumptionInvoiceId entityId, Item item, Value value) {
+    public ConsumptionInvoice(ConsumptionInvoiceId entityId, List<Item> item, Value value) {
         super(entityId);
         this.item=item;
         this.value=value;
@@ -23,14 +24,16 @@ public class ConsumptionInvoice extends Entity<ConsumptionInvoiceId> {
     }
 
     public void addItem(Item item){
-        this.item = Objects.requireNonNull(item);
+        this.item.add(Objects.requireNonNull(item));
     }
 
+
+//getter
     public Value invoiceValue() {
         return value;
     }
 
-    public Item item() {
+    public List<Item> item() {
         return item;
     }
 }
