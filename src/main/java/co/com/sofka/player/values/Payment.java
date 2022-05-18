@@ -1,4 +1,10 @@
 package co.com.sofka.player.values;
 
-public class Payment {
+import co.com.sofka.domain.generic.ValueObject;
+
+public class Payment implements ValueObject<Integer> {
+    @Override
+    public Integer value() {
+        return null;
+    }
 }

@@ -1,4 +1,6 @@
 package co.com.sofka.player.values;
 
-public class ConsumptionInvoiceId {
+import co.com.sofka.domain.generic.Identity;
+
+public class ConsumptionInvoiceId extends Identity {
 }
