@@ -1,4 +1,10 @@
 package co.com.sofka.poker.values;
 
-public class ChairsNumber {
+import co.com.sofka.domain.generic.ValueObject;
+
+public class ChairsNumber implements ValueObject<Integer> {
+    @Override
+    public Integer value() {
+        return null;
+    }
 }

@@ -1,4 +1,6 @@
 package co.com.sofka.poker.values;
 
-public class TableId {
+import co.com.sofka.domain.generic.Identity;
+
+public class TableId extends Identity {
 }
