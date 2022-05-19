@@ -5,9 +5,11 @@ import co.com.sofka.poker.values.DealerId;
 import co.com.sofka.poker.values.Name;
 import co.com.sofka.poker.values.YearsOfExperience;
 
+import java.util.Objects;
+
 public class Dealer extends Entity<DealerId> {
-    private final Name name;
-    private final YearsOfExperience yearsOfExperience;
+    private Name name;
+    private YearsOfExperience yearsOfExperience;
 
     public Dealer(DealerId entityId, Name name, YearsOfExperience yearsOfExperience) {
         super(entityId);
@@ -21,5 +23,12 @@ public class Dealer extends Entity<DealerId> {
 
     public YearsOfExperience yearsOfExperience() {
         return yearsOfExperience;
+    }
+
+    public void updateDealerName(Name name){
+        this.name = Objects.requireNonNull(name);
+    }
+    public void updateDealerYearsOfExperience(YearsOfExperience yearsOfExperience){
+        this.yearsOfExperience = Objects.requireNonNull(yearsOfExperience);
     }
 }
