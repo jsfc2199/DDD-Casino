@@ -1,9 +1,11 @@
 package co.com.sofka.player;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.player.events.*;
 import co.com.sofka.player.values.*;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -24,6 +26,13 @@ public class Player extends AggregateEvent<PlayerId> {
     private Player(PlayerId entityId){
         super(entityId);
         subscribe(new PlayerChange(this) );//every time that a bahavior is launched an event that has a suscriptor in order to change the states
+    }
+
+    //allows me to build the Player object. Builds an aggregate that was already saved
+    public static Player from(PlayerId playerId, List<DomainEvent> events){
+        var player = new Player(playerId);
+        events.forEach(player::applyEvent); //I have a suscriptor and an event list, so this rebuilds all the aggreate related with the events
+        return player;
     }
 
     //behaviors
