@@ -13,7 +13,7 @@ public class YearsOfExperience implements ValueObject<Integer> {
 
     @Override
     public Integer value() {
-        return null;
+        return value;
     }
 
     @Override

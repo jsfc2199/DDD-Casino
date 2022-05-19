@@ -16,7 +16,7 @@ public class Name implements ValueObject<String> {
 
     @Override
     public String value() {
-        return value();
+        return value;
     }
 
     @Override

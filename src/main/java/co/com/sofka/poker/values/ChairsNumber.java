@@ -13,7 +13,7 @@ public class ChairsNumber implements ValueObject<Integer> {
 
     @Override
     public Integer value() {
-        return value();
+        return value;
     }
 
     @Override
