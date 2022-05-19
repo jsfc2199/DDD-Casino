@@ -14,8 +14,8 @@ import java.util.Set;
 public class Poker extends AggregateEvent<PokerId> {
     protected Income income;
     protected PlayerId playerId;
-    protected Set<Dealer> dealer;
-    protected Set<Table> table;
+    protected Set<Dealer> dealers;
+    protected Set<Table> tables;
 
     public Poker(PokerId entityId, Income income) {
         super(entityId);
@@ -81,11 +81,11 @@ public class Poker extends AggregateEvent<PokerId> {
     }
 
     public Optional<Dealer> getDealerById(DealerId dealerId){
-        return dealer().stream().filter(dealer -> dealer.identity().equals(dealerId)).findFirst();
+        return dealers().stream().filter(dealer -> dealer.identity().equals(dealerId)).findFirst();
     }
 
     public Optional<Table> getTableById(TableId tableId){
-        return table().stream().filter(table -> table.identity().equals(tableId)).findFirst();
+        return tables().stream().filter(table -> table.identity().equals(tableId)).findFirst();
     }
 
     public Income income() {
@@ -96,11 +96,11 @@ public class Poker extends AggregateEvent<PokerId> {
         return playerId;
     }
 
-    public Set<Dealer> dealer() {
-        return dealer;
+    public Set<Dealer> dealers() {
+        return dealers;
     }
 
-    public Set<Table> table() {
-        return table;
+    public Set<Table> tables() {
+        return tables;
     }
 }
