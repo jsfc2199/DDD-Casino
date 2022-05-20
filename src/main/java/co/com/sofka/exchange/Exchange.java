@@ -14,8 +14,8 @@ import java.util.Set;
 public class Exchange extends AggregateEvent<ExchangeId> {
     protected ExchangeAmount exchangeAmount;
     protected PlayerId playerId;
-    protected Set<ExchangeEmployee> exchangeEmployee;
-    protected Set<Operation> operation;
+    protected Set<ExchangeEmployee> exchangeEmployees;
+    protected Set<Operation> operations;
 
     public Exchange(ExchangeId entityId, ExchangeAmount exchangeAmount) {
         super(entityId);
@@ -23,7 +23,7 @@ public class Exchange extends AggregateEvent<ExchangeId> {
     }
 
     private Exchange(ExchangeId entityId){
-        super(exchangeId);
+        super(entityId);
         subscribe(new ExchangeChange(this));
     }
 
@@ -107,10 +107,10 @@ public class Exchange extends AggregateEvent<ExchangeId> {
     }
 
     public Set<ExchangeEmployee> exchangeEmployees() {
-        return exchangeEmployee;
+        return exchangeEmployees;
     }
 
     public Set<Operation> operations() {
-        return operation;
+        return operations;
     }
 }

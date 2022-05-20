@@ -6,20 +6,22 @@ import co.com.sofka.exchange.values.Chip;
 import co.com.sofka.exchange.values.ExchangeEmployeeId;
 import co.com.sofka.exchange.values.Name;
 
+import java.util.Objects;
+
 public class ExchangeEmployee extends Entity<ExchangeEmployeeId> {
-    private final Name name;
-    private final CashFunds cashFunds;
-    private final Chip chip;
+    private Name employeeName;
+    private CashFunds cashFunds;
+    private Chip chip;
 
     public ExchangeEmployee(ExchangeEmployeeId entityId, Name name, CashFunds cashFunds, Chip chip) {
         super(entityId);
-        this.name=name;
+        this.employeeName=name;
         this.cashFunds=cashFunds;
         this.chip=chip;
     }
 
     public Name name() {
-        return name;
+        return employeeName;
     }
 
     public CashFunds cashFunds() {
@@ -28,5 +30,13 @@ public class ExchangeEmployee extends Entity<ExchangeEmployeeId> {
 
     public Chip chip() {
         return chip;
+    }
+
+    public void updateEmployeeName(Name name){
+        this.employeeName = Objects.requireNonNull(name);
+    }
+
+    public void addChip(Chip chip){
+        this.chip = chip;
     }
 }
